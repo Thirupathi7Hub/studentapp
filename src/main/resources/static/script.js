@@ -98,6 +98,25 @@ function deleteFromModal() {
     .catch(err => console.error("Delete error:", err));
 }
 
+function showSection(name) {
+  document.getElementById('section-list').style.display =
+    name === 'list' ? 'block' : 'none';
+
+  document.getElementById('section-add').style.display =
+    name === 'add' ? 'block' : 'none';
+
+  document.getElementById('page-title').textContent =
+    name === 'list' ? 'All Students' : 'Add Student';
+
+  // highlight active nav
+  document.querySelectorAll('.nav-item').forEach((el, i) => {
+    el.classList.toggle(
+      'active',
+      (i === 0 && name === 'list') || (i === 1 && name === 'add')
+    );
+  });
+}
+
 /* SAVE */
 function saveStudent() {
   const id = document.getElementById('edit-id').value;
