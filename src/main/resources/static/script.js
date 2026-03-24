@@ -160,7 +160,7 @@ function saveStudent() {
     phone: document.getElementById('f-phone').value || null,
     age: document.getElementById('f-age').value
           ? parseInt(document.getElementById('f-age').value)
-          : null, // ✅ FIXED (no NaN)
+          : null,
     department: document.getElementById('f-dept').value || null,
     year: document.getElementById('f-year').value || null,
     gender: document.getElementById('f-gender').value || null
@@ -170,10 +170,11 @@ function saveStudent() {
 
   if (!body.name || !body.email) {
     msg.textContent = 'Name and Email required!';
+    msg.className = 'form-msg error'; // ✅ ADDED
     return;
   }
 
-  console.log("Sending:", body); // ✅ DEBUG
+  console.log("Sending:", body);
 
   fetch(id ? `${API}/${id}` : API, {
     method: id ? 'PUT' : 'POST',
@@ -182,19 +183,33 @@ function saveStudent() {
   })
     .then(async r => {
       if (!r.ok) {
-        const errText = await r.text(); // ✅ SHOW BACKEND ERROR
+        const errText = await r.text();
         throw new Error(errText);
       }
       return r.json();
     })
     .then(() => {
       msg.textContent = id ? 'Updated!' : 'Added!';
+      msg.className = 'form-msg success'; // ✅ ADDED
+
+      // ✅ CLEAR FORM AFTER SAVE (ADDED)
+      document.getElementById('edit-id').value = '';
+      document.getElementById('f-name').value = '';
+      document.getElementById('f-email').value = '';
+      document.getElementById('f-phone').value = '';
+      document.getElementById('f-age').value = '';
+      document.getElementById('f-dept').value = '';
+      document.getElementById('f-year').value = '';
+      document.getElementById('f-gender').value = '';
+
       setTimeout(() => {
+        showSection('list');   // ✅ ADDED (go back to list)
         loadStudents();
-      }, 1000);
+      }, 800);
     })
     .catch(err => {
       console.error("Save error:", err);
       msg.textContent = "Error: " + err.message;
+      msg.className = 'form-msg error'; // ✅ ADDED
     });
 }
