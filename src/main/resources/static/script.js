@@ -75,8 +75,8 @@ function openModal(id) {
 
   document.getElementById('m-name').textContent = s.name;
   document.getElementById('m-email').textContent = s.email;
-  document.getElementById('s.age').textContent = s.age;
-  document.getElementById('s.year').textContent = s.year;
+  document.getElementById('m.age').textContent = s.age;
+  document.getElementById('m.year').textContent = s.year;
   
 
   document.getElementById('overlay').classList.add('show');
