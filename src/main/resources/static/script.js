@@ -88,6 +88,24 @@ function closeModal() {
   currentStudent = null;
 }
 
+function editFromModal() {
+  if (!currentStudent) return;
+
+  closeModal();
+  showSection('add');
+
+  const s = currentStudent;
+
+  document.getElementById('edit-id').value  = s.id;
+  document.getElementById('f-name').value   = s.name;
+  document.getElementById('f-email').value  = s.email;
+  document.getElementById('f-phone').value  = s.phone || '';
+  document.getElementById('f-age').value    = s.age || '';
+  document.getElementById('f-dept').value   = s.department || '';
+  document.getElementById('f-year').value   = s.year || '';
+  document.getElementById('f-gender').value = s.gender || '';
+}
+
 /* DELETE */
 function deleteFromModal() {
   if (!currentStudent) return;
