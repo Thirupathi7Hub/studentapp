@@ -388,3 +388,193 @@ select option { background: var(--surface2); }
 }
 
 .btn-del-m:hover { background: var(--danger); color: #fff; }
+/* ─── RESPONSIVE ─── */
+
+@media (max-width: 768px) {
+
+  body {
+    flex-direction: column;
+  }
+
+  /* Sidebar becomes top navbar */
+  .sidebar {
+    position: relative;
+    width: 100%;
+    height: auto;
+    flex-direction: row;
+    align-items: center;
+    padding: 14px 16px;
+    gap: 12px;
+    flex-wrap: wrap;
+    border-right: none;
+    border-bottom: 1px solid var(--border);
+  }
+
+  .logo {
+    margin-bottom: 0;
+    width: 36px;
+    height: 36px;
+    font-size: 13px;
+  }
+
+  .nav-label {
+    margin-bottom: 0;
+    font-size: 13px;
+  }
+
+  .nav-divider {
+    display: none;
+  }
+
+  .nav-item {
+    padding: 7px 12px;
+    font-size: 12px;
+  }
+
+  .stats-box {
+    margin-top: 0;
+    margin-left: auto;
+    padding: 8px 14px;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    border-radius: 8px;
+  }
+
+  .stat-num {
+    font-size: 20px;
+  }
+
+  .stat-label {
+    font-size: 10px;
+    margin-top: 0;
+  }
+
+  /* Main content full width */
+  .main {
+    margin-left: 0;
+    padding: 20px 16px;
+  }
+
+  /* Topbar stacks vertically */
+  .topbar {
+    flex-direction: column;
+    align-items: stretch;
+    gap: 12px;
+    margin-bottom: 20px;
+  }
+
+  .page-title {
+    font-size: 22px;
+  }
+
+  .search-box {
+    width: 100%;
+  }
+
+  /* Cards — 1 column on mobile */
+  .grid {
+    grid-template-columns: 1fr;
+    gap: 12px;
+  }
+
+  /* Form — 1 column on mobile */
+  .form-wrap {
+    padding: 20px 16px;
+  }
+
+  .form-grid {
+    grid-template-columns: 1fr;
+    gap: 14px;
+  }
+
+  .form-actions {
+    flex-direction: column;
+  }
+
+  .btn-save,
+  .btn-cancel {
+    width: 100%;
+    text-align: center;
+  }
+
+  /* Modal full width on mobile */
+  .modal {
+    width: 92%;
+    padding: 24px 18px;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+  }
+
+  .modal-grid {
+    grid-template-columns: 1fr;
+    gap: 8px;
+  }
+
+  .modal-actions {
+    flex-direction: column;
+    gap: 8px;
+  }
+
+  .btn-edit-m,
+  .btn-del-m {
+    width: 100%;
+    padding: 12px;
+  }
+}
+
+@media (max-width: 480px) {
+
+  .page-title {
+    font-size: 18px;
+  }
+
+  .card {
+    padding: 16px;
+  }
+
+  .card-avatar {
+    width: 40px;
+    height: 40px;
+    font-size: 15px;
+  }
+
+  .card-name {
+    font-size: 14px;
+  }
+
+  .nav-label {
+    display: none;
+  }
+
+  .modal-name {
+    font-size: 18px;
+  }
+
+  .modal-avatar {
+    width: 56px;
+    height: 56px;
+    font-size: 20px;
+  }
+}
+
+@media (min-width: 769px) and (max-width: 1024px) {
+
+  .sidebar {
+    width: 180px;
+  }
+
+  .main {
+    margin-left: 180px;
+    padding: 24px 20px;
+  }
+
+  .grid {
+    grid-template-columns: repeat(auto-fill, minmax(220px, 1fr));
+  }
+
+  .modal {
+    width: 380px;
+  }
+}
