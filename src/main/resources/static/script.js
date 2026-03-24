@@ -1,4 +1,4 @@
-const API = "https://studentapp.up.railway.app/";
+const API = "https://studentapp.up.railway.app/students";
 
 let allStudents = [];
 let currentStudent = null;
