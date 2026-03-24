@@ -73,10 +73,14 @@ function openModal(id) {
 
   currentStudent = s;
 
-  document.getElementById('m-name').textContent = s.name;
-  document.getElementById('m-email').textContent = s.email;
-  
-  
+  document.getElementById('m-name').textContent   = s.name;
+  document.getElementById('m-email').textContent  = s.email;
+  document.getElementById('m-phone').textContent  = s.phone || '—';
+  document.getElementById('m-age').textContent    = s.age ?? '—';
+  document.getElementById('m-year').textContent   = s.year || '—';
+  document.getElementById('m-gender').textContent = s.gender || '—';
+  document.getElementById('m-id').textContent     = '#' + s.id;
+
 
   document.getElementById('overlay').classList.add('show');
   document.getElementById('modal').classList.add('show');
@@ -89,12 +93,21 @@ function closeModal() {
 }
 
 function editFromModal() {
-  if (!currentStudent) return;
+  // ✅ fallback: get student again if null
+  let s = currentStudent;
+
+  if (!s) {
+    const idText = document.getElementById('m-id').textContent.replace('#','');
+    s = allStudents.find(x => x.id == idText);
+  }
+
+  if (!s) {
+    alert("No student selected");
+    return;
+  }
 
   closeModal();
   showSection('add');
-
-  const s = currentStudent;
 
   document.getElementById('edit-id').value  = s.id;
   document.getElementById('f-name').value   = s.name;
