@@ -1,0 +1,126 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Student Portal</title>
+  <link href="https://fonts.googleapis.com/css2?family=Syne:wght@400;600;700;800&family=DM+Sans:wght@300;400;500&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+  <div class="sidebar">
+    <div class="logo">SP</div>
+    <div class="nav-label">Student Portal</div>
+    <div class="nav-divider"></div>
+    <div class="nav-item active" onclick="showSection('list')">All Students</div>
+    <div class="nav-item" onclick="showSection('add')">Add Student</div>
+    <div class="stats-box">
+      <div class="stat-num" id="total-count">0</div>
+      <div class="stat-label">Total Students</div>
+    </div>
+  </div>
+
+  <div class="main">
+
+    <!-- Header -->
+    <div class="topbar">
+      <div>
+        <div class="page-title" id="page-title">All Students</div>
+        <div class="page-sub">Manage your student records</div>
+      </div>
+      <input type="text" class="search-box" placeholder="Search by name or department..." oninput="searchStudents(this.value)">
+    </div>
+
+    <!-- List Section -->
+    <div id="section-list">
+      <div class="grid" id="student-grid"></div>
+    </div>
+
+    <!-- Add/Edit Section -->
+    <div id="section-add" style="display:none">
+      <div class="form-wrap">
+        <input type="hidden" id="edit-id">
+        <div class="form-grid">
+          <div class="field">
+            <label>Full Name</label>
+            <input type="text" id="f-name" placeholder="e.g. Arun Kumar">
+          </div>
+          <div class="field">
+            <label>Email Address</label>
+            <input type="email" id="f-email" placeholder="e.g. arun@example.com">
+          </div>
+          <div class="field">
+            <label>Phone Number</label>
+            <input type="text" id="f-phone" placeholder="e.g. 9876543210">
+          </div>
+          <div class="field">
+            <label>Age</label>
+            <input type="number" id="f-age" placeholder="e.g. 20">
+          </div>
+          <div class="field">
+            <label>Department</label>
+            <select id="f-dept">
+              <option value="">Select Department</option>
+              <option>Computer Science</option>
+              <option>Electronics</option>
+              <option>Mechanical</option>
+              <option>Civil</option>
+              <option>Information Technology</option>
+              <option>Mathematics</option>
+            </select>
+          </div>
+          <div class="field">
+            <label>Year</label>
+            <select id="f-year">
+              <option value="">Select Year</option>
+              <option>1st Year</option>
+              <option>2nd Year</option>
+              <option>3rd Year</option>
+              <option>4th Year</option>
+            </select>
+          </div>
+          <div class="field">
+            <label>Gender</label>
+            <select id="f-gender">
+              <option value="">Select Gender</option>
+              <option>Male</option>
+              <option>Female</option>
+              <option>Other</option>
+            </select>
+          </div>
+        </div>
+        <div class="form-actions">
+          <button class="btn-save" onclick="saveStudent()">Save Student</button>
+          <button class="btn-cancel" onclick="showSection('list')">Cancel</button>
+        </div>
+        <div class="form-msg" id="form-msg"></div>
+      </div>
+    </div>
+
+  </div>
+
+  <!-- Detail Modal -->
+  <div class="overlay" id="overlay" onclick="closeModal()"></div>
+  <div class="modal" id="modal">
+    <button class="modal-close" onclick="closeModal()">✕</button>
+    <div class="modal-avatar" id="m-avatar"></div>
+    <div class="modal-name" id="m-name"></div>
+    <div class="modal-dept" id="m-dept"></div>
+    <div class="modal-grid">
+      <div class="modal-field"><span class="mf-label">Email</span><span class="mf-val" id="m-email"></span></div>
+      <div class="modal-field"><span class="mf-label">Phone</span><span class="mf-val" id="m-phone"></span></div>
+      <div class="modal-field"><span class="mf-label">Age</span><span class="mf-val" id="m-age"></span></div>
+      <div class="modal-field"><span class="mf-label">Year</span><span class="mf-val" id="m-year"></span></div>
+      <div class="modal-field"><span class="mf-label">Gender</span><span class="mf-val" id="m-gender"></span></div>
+      <div class="modal-field"><span class="mf-label">ID</span><span class="mf-val" id="m-id"></span></div>
+    </div>
+    <div class="modal-actions">
+      <button class="btn-edit-m" onclick="editFromModal()">Edit</button>
+      <button class="btn-del-m" onclick="deleteFromModal()">Delete</button>
+    </div>
+  </div>
+
+  <script src="script.js"></script>
+</body>
+</html>
