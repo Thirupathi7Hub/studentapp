@@ -431,16 +431,19 @@ select option { background: var(--surface2); }
     font-size: 12px;
   }
 
-  .stats-box {
-    margin-top: 0;
-    margin-left: auto;
-    padding: 8px 14px;
-    display: flex;
-    align-items: center;
-    gap: 8px;
-    border-radius: 8px;
-  }
-
+ /* NEW */
+.stats-box {
+  margin-top: 0;
+  margin-left: auto;
+  margin-right: auto;
+  padding: 8px 14px;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  border-radius: 8px;
+  justify-content: center;
+  width: 100%;
+}
   .stat-num {
     font-size: 20px;
   }
